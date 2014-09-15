@@ -15,3 +15,29 @@ Crafty.c("Grid", {
     }
   }
 });
+
+Crafty.c("Actor", {
+  init: function() {
+    this.requires("2D, Canvas, Grid");
+  }
+});
+
+Crafty.c("Tree", {
+  init: function() {
+    this.requires("Actor, Color").color("rgb(20, 125, 40)");
+  }
+});
+
+Crafty.c("Bush", {
+  init: function() {
+    this.requires("Actor, Color").color("rgb(20, 185, 40)");
+  }
+});
+
+Crafty.c("PlayerCharacter", {
+  init: function() {
+    this.requires("Actor, Fourway, Color")
+      .fourway(4)
+      .color("rgb(20, 75, 40)");
+  }
+})
