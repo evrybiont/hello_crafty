@@ -39,7 +39,8 @@ Crafty.c("PlayerCharacter", {
     this.requires("Actor, Fourway, Color, Collision")
       .fourway(4)
       .color("rgb(20, 75, 40)")
-      .stopOnSolid();
+      .stopOnSolid()
+      .onHit("Village", this.visitVillage);
   },
 
   stopOnSolid: function() {
@@ -53,5 +54,21 @@ Crafty.c("PlayerCharacter", {
       this.x -= this._movement.x;
       this.y -= this._movement.y;
     }
+  },
+
+  visitVillage: function(data) {
+    village = data[0].obj;
+    village.collect();
+  }
+});
+
+Crafty.c("Village", {
+  init: function() {
+    this.requires("Actor, Color")
+      .color("rgb(170, 125, 40)");
+  },
+
+  collect: function() {
+    this.destroy();
   }
 });
