@@ -24,21 +24,20 @@ Crafty.c("Actor", {
 
 Crafty.c("Tree", {
   init: function() {
-    this.requires("Actor, Color, Solid").color("rgb(20, 125, 40)");
+    this.requires("Actor, Solid, spr_tree");
   }
 });
 
 Crafty.c("Bush", {
   init: function() {
-    this.requires("Actor, Color, Solid").color("rgb(20, 185, 40)");
+    this.requires("Actor, Solid, spr_bush");
   }
 });
 
 Crafty.c("PlayerCharacter", {
   init: function(){
-    this.requires("Actor, Fourway, Color, Collision")
+    this.requires("Actor, Fourway, Collision, spr_player")
       .fourway(4)
-      .color("rgb(20, 75, 40)")
       .stopOnSolid()
       .onHit("Village", this.visitVillage);
   },
@@ -49,7 +48,7 @@ Crafty.c("PlayerCharacter", {
   },
 
   stopMovement: function() {
-    /*this._speed = 0;*/
+    this._speed = 0;
     if (this._movement) {
       this.x -= this._movement.x;
       this.y -= this._movement.y;
@@ -58,17 +57,16 @@ Crafty.c("PlayerCharacter", {
 
   visitVillage: function(data) {
     village = data[0].obj;
-    village.collect();
+    village.visit();
   }
 });
 
 Crafty.c("Village", {
   init: function() {
-    this.requires("Actor, Color")
-      .color("rgb(170, 125, 40)");
+    this.requires("Actor, spr_village");
   },
 
-  collect: function() {
+  visit: function() {
     this.destroy();
     Crafty.trigger("VillageVisited", this);
   }
