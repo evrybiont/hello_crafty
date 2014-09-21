@@ -53,7 +53,7 @@ Crafty.scene("Victory", function(){
   Crafty.e("2D, DOM, Text")
     .attr({x: 0, y: Game.height()/2 -24, w: Game.width()})
     .text("All villages visited!")
-    .css($text_css);
+    .textFont($text_css);
 
   Crafty.audio.play("applause");
 
@@ -75,7 +75,7 @@ Crafty.scene("Loading", function(){
   Crafty.e("2D, DOM, Text")
     .text("Loading, please wait...")
     .attr({x: 0, y: Game.height()/2 -24, w: Game.width()})
-    .css($text_css);
+    .textFont($text_css);
 
   Crafty.load(["assets/16x16_forest_1.gif"
                , "assets/hunter.png"

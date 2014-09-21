@@ -23,7 +23,7 @@ Game = {
   }
 }
 $text_css = {
-  'font-size': '24px',
-  'font-family': 'Arial',
-  'color': 'white',
+  'size': '24px',
+  'family': 'Arial',
+  'color': 'red',
   'text-align': 'center' }
