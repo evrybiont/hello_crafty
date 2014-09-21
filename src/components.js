@@ -34,10 +34,16 @@ Crafty.c("Bush", {
   }
 });
 
+Crafty.c("Rock", {
+  init: function() {
+    this.requires("Actor, Solid, spr_rock");
+  }
+});
+
 Crafty.c("PlayerCharacter", {
   init: function(){
     this.requires("Actor, Fourway, Collision, spr_player, SpriteAnimation")
-      .fourway(4)
+      .fourway(2)
       .stopOnSolid()
       .onHit("Village", this.visitVillage)
       .animate("PlayerMovingUp",    0, 0, 2)
@@ -45,7 +51,7 @@ Crafty.c("PlayerCharacter", {
       .animate("PlayerMovingDown",  0, 2, 2)
       .animate("PlayerMovingLeft",  0, 3, 2);
 
-    var animation_speed = 8;
+    var animation_speed = 4;
     this.bind("NewDirection", function(data){
       if (data.x > 0){
         this.animate("PlayerMovingRight", animation_speed, -1);
